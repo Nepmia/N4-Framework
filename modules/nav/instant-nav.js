@@ -1,5 +1,5 @@
 // Copy of another project to be refactored into an universal version
-
+const templateFolder = "/templates/"; // Get local templates
 var navLoadInstance; // Initialize navload instance so it can be cleared when changing page
 
 $(document).ready(() => {
@@ -34,22 +34,18 @@ function contentUnload(newPage){
                         },300);
 };
 function loadContent(newPage){
-    var newPath = "/templates/" + newPage + ".html"; // Get local template
-    $(".page-content").load( newPath ); // load template on page
+    $(".page-content").load( templateFolder + newPage + ".html" ); // load template on page
 };
-function navSwitch(newPage){
-    changePage(newPage); // Change page to the desired page
-    contentUnload(newPage); // Unload content
-};
+
 function navCheck(){
     clearTimeout(navLoadInstance); // Clear navLoad instance
     var newPage = window.location.hash; // get new hash
     var page = newPage.replace("#", ""); // parsing purpose 
     if (page == "") { // if hash is null
-        navSwitch("home");
+        changePage("home");
     } else { // if hash is unknow 
         alert("ERROR 404: The page you requested doesn't exist on this server. Please check URL. Redirecting to home page.")
-        navSwitch("home");
+        changePage("home");
     }
 }
 
