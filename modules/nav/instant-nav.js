@@ -4,7 +4,6 @@ var navLoadInstance; // Initialize navload instance so it can be cleared when ch
 
 $(document).ready(() => {
     $(document).on("click", ".pageChanger", function(){ // When user click on a pagechanger elt
-            clearTimeout(eContainerInstance); // Clear the eContainer instance to avoid weird bahavior
             clearTimeout(navLoadInstance); // Clear navLoad instance
             var newPage = $(this).attr("page"); // get clicked elt destination
             var newTitle = $(this).attr("page-title");
@@ -17,7 +16,6 @@ $(document).ready(() => {
 function changePage(newPage, newTitle){
     $(".pageChanger").removeClass("active"); // Remove all active classes for pageChangers
     if (newPage != "404") { // Only if newPage is not equal to 404
-       $("." + newPage).addClass("active"); // Give the pagechanger with newPage in their class the active class
        document.title = newTitle; // Change document title to the new parsed one
     } else {
         document.title = "Error 404 - EncomPN"; // Give page a 404 title
@@ -44,7 +42,6 @@ function navSwitch(newPage){
     sideNav("off"); // Disable sidenav (incase it was opened)
 };
 function navCheck(){
-    clearTimeout(eContainerInstance); // Clear the eContainer instance to avoid weird bahavior
     clearTimeout(navLoadInstance); // Clear navLoad instance
     var newPage = window.location.hash; // get new hash
     var page = newPage.replace("#", ""); // parsing purpose
