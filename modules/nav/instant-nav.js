@@ -39,19 +39,16 @@ function loadContent(newPage){
 function navSwitch(newPage){
     changePage(newPage); // Change page to the desired page
     contentUnload(newPage); // Unload content
-    sideNav("off"); // Disable sidenav (incase it was opened)
 };
 function navCheck(){
     clearTimeout(navLoadInstance); // Clear navLoad instance
     var newPage = window.location.hash; // get new hash
-    var page = newPage.replace("#", ""); // parsing purpose
-    if (page in titles) { // if new hash is in title dict
-        navSwitch(page);  
-    } else if (page == "") { // if hash is null
-        navSwitch("home");
+    var page = newPage.replace("#", ""); // parsing purpose 
+    if (page == "") { // if hash is null
+        navSwitch("");
     } else { // if hash is unknow 
         alert("ERROR 404: The page you requested doesn't exist on this server. Please check URL. Redirecting to home page.")
-        navSwitch("home");
+        navSwitch("");
     }
 }
 
