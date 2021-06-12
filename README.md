@@ -23,7 +23,7 @@ A simple, but extremely useful system. It allow to bypass and remove the reload 
 
 Basically having an index, without content, only your head, styles and scripts. InstantNav animate a page switch, making it very intuitive and dynamic, it uses a normal url system and works with history butons.
 
-##ScrollFX 
+## ScrollFX 
 
 A very simple module that will retract and expand navbar depending on user scroll, it has multiples functions such as navlock.
 
