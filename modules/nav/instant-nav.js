@@ -7,7 +7,7 @@ $(document).ready(() => {
             clearTimeout(eContainerInstance); // Clear the eContainer instance to avoid weird bahavior
             clearTimeout(navLoadInstance); // Clear navLoad instance
             var newPage = $(this).attr("page"); // get clicked elt destination
-            var newTitle = $(this).attr("title");
+            var newTitle = $(this).attr("page-title");
             changePage(newPage, newTitle); // Change page to the desired page and give it a title
             $(".navbar").addClass("toggled"); // add toggled to navbar to be sure it is not affected by ScrollFx until user scrolls
     });
