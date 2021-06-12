@@ -1,4 +1,3 @@
-// Copy of another project to be refactored into an universal version
 const templateFolder = "/templates/"; // Get local templates
 var navLoadInstance; // Initialize navload instance so it can be cleared when changing page
 
