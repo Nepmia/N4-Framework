@@ -8,13 +8,14 @@ def template_registrator():
     templates_exporter(templates_list, module_path)
 
 def templates_module(module_path):
+    base_template = "const Templates = {\n"
     if os.path.exists(module_path):
         print("module found, deleting")
         os.remove(module_path)
-        templates_module_writer(module_path, "const = {\n", "w")
+        templates_module_writer(module_path, base_template, "w")
     else:
         print("module not found, creating")
-        templates_module_writer(module_path, "const = {\n", "w")
+        templates_module_writer(module_path, base_template, "w")
 
 def templates_module_writer(module_path, content, method):
     module = open(module_path, method)
@@ -25,7 +26,8 @@ def templates_module_writer(module_path, content, method):
 def templates_exporter(templates_list, module_path):
     for item in templates_list:
         with open(module_path, "a") as module:
-            module.write(f"{item}\n")
+            parsed_item = item.replace(".html", "")
+            module.write(f"{parsed_item}\n")
     templates_module_writer(module_path, "\n},", "a")
 
 

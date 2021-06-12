@@ -1,5 +1,5 @@
-const = {
+const Templates = {
 f
-home.html
+home
 
 },
