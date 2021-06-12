@@ -18,7 +18,7 @@ function changePage(newPage, newTitle){
     if (newPage != "404") { // Only if newPage is not equal to 404
        document.title = newTitle; // Change document title to the new parsed one
     } else {
-        document.title = "Error 404 - EncomPN"; // Give page a 404 title
+        document.title = "Error 404"; // Give page a 404 title
     }
     $("html,body").animate({ scrollTop: 0 }, "swing", () => { // Rescroll up
         saved_scroll = 0; // Reset saved scroll so user doesn't get weird navbar
