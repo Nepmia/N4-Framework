@@ -18,10 +18,8 @@ def templates_module(module_path):
         templates_module_writer(module_path, base_template, "w")
 
 def templates_module_writer(module_path, content, method):
-    module = open(module_path, method)
-    module.write(content)
-    module.close()
-
+    with open(module_path, method) as module:
+        module.write(content)
 
 def templates_exporter(templates_list, module_path):
     for item in templates_list:
