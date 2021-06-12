@@ -7,17 +7,16 @@ $(document).ready(() => {
             clearTimeout(eContainerInstance); // Clear the eContainer instance to avoid weird bahavior
             clearTimeout(navLoadInstance); // Clear navLoad instance
             var newPage = $(this).attr("page"); // get clicked elt destination
-            console.log(newPage)
-            changePage(newPage); // Change page to the desired page
+            var newTitle = $(this).attr("title");
+            changePage(newPage, newTitle); // Change page to the desired page and give it a title
             $(".navbar").addClass("toggled"); // add toggled to navbar to be sure it is not affected by ScrollFx until user scrolls
     });
 
     navCheck(); // When document load, check the hash to see if a page needs to be loaded
 });
-function changePage(newPage){
+function changePage(newPage, newTitle){
     $(".pageChanger").removeClass("active"); // Remove all active classes for pageChangers
     if (newPage != "404") { // Only if newPage is not equal to 404
-       var newTitle = eval("titles." + newPage); // Format newPage to get a title in title dict
        $("." + newPage).addClass("active"); // Give the pagechanger with newPage in their class the active class
        document.title = newTitle; // Change document title to the new parsed one
     } else {
