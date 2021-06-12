@@ -14,6 +14,7 @@ $(document).ready(() => {
     navCheck(); // When document load, check the hash to see if a page needs to be loaded
 });
 function changePage(newPage, newTitle){
+    console.log(newPage + " and " + newTitle);
     $(".pageChanger").removeClass("active"); // Remove all active classes for pageChangers
     if (newPage != "404") { // Only if newPage is not equal to 404
        document.title = newTitle; // Change document title to the new parsed one
