@@ -6,7 +6,7 @@
  
  * Components (standalone module needs to be released when ready)
  * InstantNav (standalone module needs to be released when ready)
- * ScrollFX (https://github.com/Nepmia/Jquery-navScrollFX)
+ * ScrollFX (documentation and standalone version: https://github.com/Nepmia/Jquery-navScrollFX)
  
  But no more actually, I will add some stuff time-by-time.
  
