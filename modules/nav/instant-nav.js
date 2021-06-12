@@ -34,7 +34,7 @@ function contentUnload(newPage){
                         },300);
 };
 function loadContent(newPage){
-    var newPath = "/template/" + newPage + ".html"; // Get local template
+    var newPath = "/templates/" + newPage + ".html"; // Get local template
     $(".page-content").load( newPath ); // load template on page
 };
 function navSwitch(newPage){
@@ -46,10 +46,10 @@ function navCheck(){
     var newPage = window.location.hash; // get new hash
     var page = newPage.replace("#", ""); // parsing purpose 
     if (page == "") { // if hash is null
-        navSwitch("");
+        navSwitch("home");
     } else { // if hash is unknow 
         alert("ERROR 404: The page you requested doesn't exist on this server. Please check URL. Redirecting to home page.")
-        navSwitch("");
+        navSwitch("home");
     }
 }
 
