@@ -8,5 +8,12 @@ APP_ROOT=f"{APP_NAME}/"
 
 # Regular Expressions
 
-TITLE_VAR_RE="\${(\S+)}"
+VAR_CATCH_RE="\${(\S+)}"
+
+# Pages variable (Must be manually asigned)
+
+INDEX_VAR= {
+    
+}
+
 
