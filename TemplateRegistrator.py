@@ -3,7 +3,7 @@ import settings
 import re
 from termcolor import colored
 from pathlib import Path
-from builder import write
+from write import write
 
 def template_registrator():
     module_path = f"{settings.APP_MODULE_FOLDER}/TemplateRegistrator/templates.js"
