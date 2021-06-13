@@ -1,4 +1,6 @@
 import re
+import os
+import settings
 from pathlib import Path
 from termcolor import colored
 
@@ -48,8 +50,25 @@ def variable_extractor(file, expression, variable_name):
             colored(" ${ContentWithNoSpaceBut_or-Instead}", "green")
             )
 
+def page_variable_detector():
+    template_list = os.listdir(settings.APP_TEMPLATE_FOLDER)
+    for item in template_list:
+        try:
+             settings.item
+        except NameError:
+           print(
+                colored("[N4] ", "blue"),
+                colored("No variables detected for page", "cyan"),
+                colored(item, "red"),
+                colored("skipping...", "cyan")
+             )
+        else:
+            print(
+                colored("[N4] ", "blue"),
+                colored("Variables detected for page", "cyan"),
+                colored(item, "red"),
+                colored("not skipping...", "cyan")
+             )
 
-
-
-
+page_variable_detector()
 

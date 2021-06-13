@@ -12,7 +12,7 @@ VAR_CATCH_RE="\${(\S+)}"
 
 # Pages variable (Must be manually asigned)
 
-INDEX_VAR= {
+index= {
     
 }
 
