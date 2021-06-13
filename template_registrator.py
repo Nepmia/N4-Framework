@@ -45,7 +45,14 @@ def templates_module(module_path):
 
 def templates_exporter(templates_list, module_path):
     for item in templates_list:
-        title = variable_extractor(f"{settings.APP_TEMPLATE_FOLDER}/{item}", settings.TITLE_VAR_RE)
+        title = variable_extractor(f"{settings.APP_TEMPLATE_FOLDER}/{item}", settings.VAR_CATCH_RE, "")
         parsed_item = item.replace(".html", "")
-        write(module_path, f"    {parsed_item} : \"{title}\",\n", "a")
+        if title == None:
+            print(
+                colored("[N4] ", "blue"),
+                colored("Given value is incorect, skipping.", "cyan")
+            )
+            pass
+        else:
+            write(module_path, f"    {parsed_item} : \"{title}\",\n", "a")
     write(module_path, "},", "a")
