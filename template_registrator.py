@@ -1,11 +1,11 @@
 import os
-import settings
+import app
 from termcolor import colored
 from write import write
 from variable_handler import variable_extractor
 
 def template_registrator():
-    module_path = f"{settings.APP_MODULE_FOLDER}/TemplateRegistrator/templates.js"
+    module_path = f"{app.MODULE_FOLDER}/TemplateRegistrator/templates.js"
     print(
         colored("[N4] ", "blue"),
         colored("Begining TemplateRegistrator module...", "cyan")
@@ -15,7 +15,7 @@ def template_registrator():
         colored("Module folder is", "cyan"),
         colored(module_path, "red")
         )
-    templates_list = os.listdir(settings.APP_TEMPLATE_FOLDER)
+    templates_list = os.listdir(app.TEMPLATE_FOLDER)
     templates_module(module_path)
     templates_exporter(templates_list, module_path)
 
@@ -45,7 +45,7 @@ def templates_module(module_path):
 
 def templates_exporter(templates_list, module_path):
     for item in templates_list:
-        title = variable_extractor(f"{settings.APP_TEMPLATE_FOLDER}/{item}", settings.VAR_CATCH_RE, "")
+        title = variable_extractor(f"{app.TEMPLATE_FOLDER}/{item}", app.VAR_CATCH_RE, "")
         parsed_item = item.replace(".html", "")
         if title == None:
             print(

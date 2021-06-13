@@ -1,6 +1,6 @@
 import re
 import os
-import settings
+import app
 from pathlib import Path
 from termcolor import colored
 
@@ -51,10 +51,10 @@ def variable_extractor(file, expression, variable_name):
             )
 
 def page_variable_detector():
-    template_list = os.listdir(settings.APP_TEMPLATE_FOLDER)
+    template_list = os.listdir(app.TEMPLATE_FOLDER)
     for item in template_list:
         try:
-             settings.item
+             app.item
         except NameError:
            print(
                 colored("[N4] ", "blue"),
