@@ -1,5 +1,4 @@
 const Templates = {
-f
-home
-
+    f : "TestIsGood",
+    home : "Page D'accueil",
 },
