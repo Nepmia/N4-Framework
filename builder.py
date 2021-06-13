@@ -1,40 +1,67 @@
 import os
-from typing import Text
 import settings
 import re
+from termcolor import colored
 from pathlib import Path
 
 def template_registrator():
-    module_path = f"{settings.APP_ROOT}/modules/TemplateRegistrator/templates.js"
+    module_path = f"{settings.APP_MODULE_FOLDER}/TemplateRegistrator/templates.js"
+    print(
+        colored("[N4] ", "blue"),
+        colored("Begining TemplateRegistrator module...", "cyan")
+        )
+    print(
+        colored("[N4] ", "blue"),
+        colored("Module folder is", "cyan"),
+        colored(module_path, "red")
+        )
     templates_list = os.listdir(settings.APP_TEMPLATE_FOLDER)
     templates_module(module_path)
     templates_exporter(templates_list, module_path)
 
+
+
 def templates_module(module_path):
     base_template = "const Templates = {\n"
+    print(
+        colored("[N4] ", "blue")
+        ,colored("Testing", "cyan")
+        ,colored("template.js", "red")
+        )
     if os.path.exists(module_path):
-        print("module found, deleting")
+        print(
+            colored("[N4] ", "blue"),
+            colored("test positive, clearing content to rewrite updated templates list...", "cyan")
+            )
         os.remove(module_path)
-        templates_module_writer(module_path, base_template, "w")
+        write(module_path, base_template, "w")
     else:
-        print("module not found, creating")
-        templates_module_writer(module_path, base_template, "w")
+        print(
+            colored("[N4] ", "blue"),
+            colored("test negaticve, creating and writing templates list", "cyan")
+            )
+        write(module_path, base_template, "w")
 
-def templates_module_writer(module_path, content, method):
-    with open(module_path, method) as module:
-        module.write(content)
 
 def templates_exporter(templates_list, module_path):
     for item in templates_list:
         title_get = Path(f"{settings.APP_TEMPLATE_FOLDER}/{item}").read_text()
         title_match = re.search("\$(\S+)", title_get)
         title = title_match[0].replace("$", "").replace("_", " ").replace("-", " ")
-        print(title)
-        with open(module_path, "a") as module:
-            parsed_item = item.replace(".html", "")
-            module.write(f"    {parsed_item} : \"{title}\",\n")
-    templates_module_writer(module_path, "},", "a")
+        parsed_item = item.replace(".html", "")
+        write(module_path, f"    {parsed_item} : \"{title}\",\n", "a")
+    write(module_path, "},", "a")
 
+def write(path, content, method):
+    print(
+        colored("[N4] ", "blue"),
+        colored("Recorded a writing request with content:", "cyan"),
+        colored(content, "red"), colored("with method", "cyan"),colored(method, "red"),
+        colored("on this file","cyan"),
+        colored(path,"red")
+        )
+    with open(path, method) as module:
+        module.write(content)
 
 template_registrator()
 
