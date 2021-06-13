@@ -6,5 +6,7 @@ APP_STATIC_FOLDER=f"{APP_NAME}/static"
 APP_MODULE_FOLDER=f"{APP_NAME}/modules"
 APP_ROOT=f"{APP_NAME}/"
 
+# Regular Expressions
 
+TITLE_VAR_RE="\${(\S+)}"
 

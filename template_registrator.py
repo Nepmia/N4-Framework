@@ -1,9 +1,8 @@
 import os
 import settings
-import re
 from termcolor import colored
-from pathlib import Path
 from write import write
+from variable_handler import variable_extractor
 
 def template_registrator():
     module_path = f"{settings.APP_MODULE_FOLDER}/TemplateRegistrator/templates.js"
@@ -46,9 +45,7 @@ def templates_module(module_path):
 
 def templates_exporter(templates_list, module_path):
     for item in templates_list:
-        title_get = Path(f"{settings.APP_TEMPLATE_FOLDER}/{item}").read_text()
-        title_match = re.search("\$(\S+)", title_get)
-        title = title_match[0].replace("$", "").replace("_", " ").replace("-", " ")
+        title = variable_extractor(f"{settings.APP_TEMPLATE_FOLDER}/{item}", settings.TITLE_VAR_RE)
         parsed_item = item.replace(".html", "")
         write(module_path, f"    {parsed_item} : \"{title}\",\n", "a")
     write(module_path, "},", "a")
