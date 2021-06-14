@@ -1,6 +1,6 @@
 import app
 # from template_registrator import templates_module, templates_exporter, template_registrator
-from jinja2 import Environment,PackageLoader, select_autoescape, FileSystemLoader
+from jinja2 import Environment, select_autoescape, FileSystemLoader
 import os
 
 
