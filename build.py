@@ -1,11 +1,11 @@
 import app
 # from template_registrator import templates_module, templates_exporter, template_registrator
-from jinja2 import Environment,PackageLoader, select_autoescape
+from jinja2 import Environment,PackageLoader, select_autoescape, FileSystemLoader
 import os
 
 
 env = Environment(
-    loader=PackageLoader(package_name="app", package_path=app.TEMPLATE_FOLDER),
+    loader=FileSystemLoader(app.TEMPLATE_FOLDER),
     autoescape=select_autoescape()
 )
 
