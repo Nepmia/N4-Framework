@@ -5,7 +5,7 @@ import os
 
 
 env = Environment(
-    loader=PackageLoader("app"),
+    loader=PackageLoader(package_name="app", package_path=app.TEMPLATE_FOLDER),
     autoescape=select_autoescape()
 )
 
@@ -15,7 +15,3 @@ for template in templates_list:
     temp = env.get_template(template)
     print(temp.render(kek="LOL"))
 # env.render_templates(settings.APP_TEMPLATE_FOLDER,  zip=None, )
-
-            
-
-
