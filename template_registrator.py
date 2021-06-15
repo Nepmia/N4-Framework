@@ -4,6 +4,7 @@ from termcolor import colored
 from write import write
 import re
 from pathlib import Path
+from template_handler import templates_lister
 
 def template_registrator():
     module_path = f"{app.MODULE_FOLDER}/TemplateRegistrator/templates.js"
@@ -16,7 +17,7 @@ def template_registrator():
         colored("Module folder is", "cyan"),
         colored(module_path, "red")
         )
-    templates_list = os.listdir(app.TEMPLATE_FOLDER)
+    templates_list = templates_lister()
     templates_module(module_path)
     templates_exporter(templates_list, module_path)
 
