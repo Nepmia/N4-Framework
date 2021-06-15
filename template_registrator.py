@@ -2,7 +2,6 @@ import os
 import app
 from termcolor import colored
 from write import write
-from variable_handler import variable_extractor
 import re
 from pathlib import Path
 
