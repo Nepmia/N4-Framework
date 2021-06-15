@@ -3,6 +3,8 @@ import app
 from termcolor import colored
 from write import write
 from variable_handler import variable_extractor
+import re
+from pathlib import Path
 
 def template_registrator():
     module_path = f"{app.MODULE_FOLDER}/TemplateRegistrator/templates.js"
@@ -45,7 +47,7 @@ def templates_module(module_path):
 
 def templates_exporter(templates_list, module_path):
     for item in templates_list:
-        title = variable_extractor(f"{app.TEMPLATE_FOLDER}/{item}", app.VAR_CATCH_RE, "")
+        title = title_extractor(f"{app.TEMPLATE_FOLDER}/{item}", app.VAR_CATCH_RE, "")
         parsed_item = item.replace(".html", "")
         if title == None:
             print(
@@ -56,3 +58,51 @@ def templates_exporter(templates_list, module_path):
         else:
             write(module_path, f"    {parsed_item} : \"{title}\",\n", "a")
     write(module_path, "},", "a")
+    print(
+                colored("[N4] ", "blue"),
+                colored("Finished to build template list for InstantNav, building pages..", "cyan")
+            )
+
+
+def title_extractor(file, expression, variable_name):
+    print(
+        colored("[N4] ", "blue"),
+        colored("Extracting variable...", "cyan"),
+        )
+    try:
+        raw_read = Path(file).read_text()
+        if variable_name == "":
+            print(
+                colored("[N4] ", "blue"),
+                colored("Detected no variable name, assuming it's a title...", "cyan"),
+                )
+            var_match = re.search(expression, raw_read)
+            var_content = var_match[0].replace("$", "").replace("_", " ").replace("-", " ").replace("{","").replace("}","")
+            print(
+                colored("[N4] ", "blue"),
+                colored(var_content, "red"),
+                colored("extracted.", "cyan")
+                )
+            return var_content
+        else:
+            print(
+                colored("[N4] ", "blue"),
+                colored("Variable name detected, extracting:", "cyan"),
+                colored(variable_name,"red")
+                )
+            var_match = re.search(fr"\${{({variable_name})}}", raw_read)
+            var_content = var_match[0].replace("$", "").replace("_", " ").replace("-", " ").replace("{","").replace("}","")
+            print(
+                colored("[N4] ", "blue"),
+                colored(var_content, "red"),
+                colored("extracted.", "cyan")
+                )
+            return var_content
+            
+    except TypeError:
+        print(
+            colored("[N4] ", "blue"),
+            colored("TypeError!", "red"),
+            colored("This error can be caused by a messed variable name / syntax. Varriable syntax should be", "cyan"),
+            colored(" ${ContentWithNoSpaceBut_or-Instead}", "green")
+            )

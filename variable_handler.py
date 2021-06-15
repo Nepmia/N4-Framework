@@ -1,11 +1,6 @@
 import re
-import os
-import app
 from pathlib import Path
 from termcolor import colored
-
-def variable_writer(file, variable_name, variable_content):
-    pass
 
 def variable_extractor(file, expression, variable_name):
     print(
@@ -49,26 +44,3 @@ def variable_extractor(file, expression, variable_name):
             colored("This error can be caused by a messed variable name / syntax. Varriable syntax should be", "cyan"),
             colored(" ${ContentWithNoSpaceBut_or-Instead}", "green")
             )
-
-def page_variable_detector():
-    template_list = os.listdir(app.TEMPLATE_FOLDER)
-    for item in template_list:
-        try:
-             app.item
-        except NameError:
-           print(
-                colored("[N4] ", "blue"),
-                colored("No variables detected for page", "cyan"),
-                colored(item, "red"),
-                colored("skipping...", "cyan")
-             )
-        else:
-            print(
-                colored("[N4] ", "blue"),
-                colored("Variables detected for page", "cyan"),
-                colored(item, "red"),
-                colored("not skipping...", "cyan")
-             )
-
-page_variable_detector()
-
