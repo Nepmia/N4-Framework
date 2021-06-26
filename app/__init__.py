@@ -9,6 +9,7 @@ COMPONENT_FOLDER=f"{NAME}/components"
 
 # Regular Expressions
 
-VAR_CATCH_RE="\${(\S+)}"
+PAGE_TITLE_REGEX="pageTitle=\"(\S+)\""
+COMPONENT_REGEX="\${(\S+)}"
 
 

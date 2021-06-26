@@ -7,4 +7,4 @@ import os
 
 
 template_registrator()
-template_builder()
+# template_builder()

@@ -3,6 +3,7 @@ from jinja2 import Environment, select_autoescape, FileSystemLoader
 import app
 import os
 import app.components 
+import re
 from termcolor import colored
 
 j_env = Environment(
@@ -11,6 +12,11 @@ j_env = Environment(
 )
 
 def templates_lister():
+    """Lists templates in app.TEMPLATE_FOLDER
+
+    Returns:
+        [list]: List containing templates file names 
+    """
     print(
     colored("[N4] ", "blue"),
     colored("template list rendered. ", "cyan")
@@ -21,13 +27,18 @@ def template_builder():
     tlist = templates_lister()
     for template in tlist:
         print(
-    colored("[N4] ", "blue"),
-    colored("Detected template:", "cyan"),
-    colored(template, "red"),
-    colored("buidling in progress...", "cyan")
-    )
-    temp = j_env.get_template(template)
-    rendered_template = temp.render(kek="LOL")
+        colored("[N4] ", "blue"),
+        colored("Detected template:", "cyan"),
+        colored(template, "red"),
+        colored("buidling in progress...", "cyan")
+        )
+        component_list = re.findall()
+
+
+
+
+        # temp = j_env.get_template(template)
+        # rendered_template = temp.render(kek="LOL")
 
 def component_builder():
     for component in app.COMPONENT_FOLDER:

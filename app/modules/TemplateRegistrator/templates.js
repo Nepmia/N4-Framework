@@ -1,4 +1,3 @@
 const Templates = {
-    f : "TestIsGood",
-    home : "Page D'accueil",
+    home : "pageTitle="Page D'accueil"",
 },
