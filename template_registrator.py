@@ -94,7 +94,7 @@ def title_extractor(file):
     try:
         raw_read = Path(file).read_text()
         var_match = re.search(app.PAGE_TITLE_REGEX, raw_read)
-        var_content = var_match[0].replace("$", "").replace("_", " ").replace("-", " ").replace("{","").replace("}","")
+        var_content = var_match[0].replace("pageTitle=", "").replace("_", " ").replace("-", " ").replace("\"","")
         print(
             colored("[N4] ", "blue"),
             colored(var_content, "red"),

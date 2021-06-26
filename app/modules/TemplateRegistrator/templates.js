@@ -1,3 +1,3 @@
 const Templates = {
-    home : "pageTitle="Page D'accueil"",
+    home : "Page D'accueil",
 },

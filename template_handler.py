@@ -1,4 +1,3 @@
-from app import components
 from jinja2 import Environment, select_autoescape, FileSystemLoader
 import app
 import os
