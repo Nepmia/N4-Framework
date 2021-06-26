@@ -1,5 +1,6 @@
 # App basic informations and folder paths 
 
+
 NAME="app"
 TEMPLATE_FOLDER=f"{NAME}/templates"
 STATIC_FOLDER=f"{NAME}/static"
