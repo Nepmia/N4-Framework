@@ -1,6 +1,8 @@
+from app import components
 from jinja2 import Environment, select_autoescape, FileSystemLoader
 import app
 import os
+import app.components 
 from termcolor import colored
 
 j_env = Environment(
@@ -27,3 +29,6 @@ def template_builder():
     temp = j_env.get_template(template)
     rendered_template = temp.render(kek="LOL")
 
+def component_builder():
+    for component in app.COMPONENT_FOLDER:
+        pass
