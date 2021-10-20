@@ -53,6 +53,8 @@ def N4_user_prompt(valid_answers:dict, question:str, display_answer:str, default
             N4_println("Please answer with:", display_answer)
 
 def  prompt_tester():
+    """Will ask a question to the user with possible answers to test if N4_user_prompt is working correctly.
+    """
     N4_println("Beginning prompt input test. Valid answers will be:", "Yes or No", "Result will be a sentence containing the answer.")
 
     prompt = N4_user_prompt(basic_answers, "Are you aware that this is a test?",basic_no_default, "no")
