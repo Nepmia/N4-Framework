@@ -1,6 +1,16 @@
 from termcolor import colored
 import sys
 
+basic_answers =  {
+        "yes" : True,
+        "y" : True,
+        "no" : False,
+        "n" : False,
+}
+
+basic_no_default = "[y/N]"
+basic_yes_default = "[Y/n]"
+
 def  N4_println(message:str, important_or_dangerous:str = "", optional_message:str = ""):
     """N4 CLI Printing function. Prints a message in the terminal.
 
@@ -45,14 +55,7 @@ def N4_user_prompt(valid_answers:dict, question:str, display_answer:str, default
 def  prompt_tester():
     N4_println("Beginning prompt input test. Valid answers will be:", "Yes or No", "Result will be a sentence containing the answer.")
 
-    valid_answers = {
-        "yes" : True,
-        "y" : True,
-        "no" : False,
-        "n" : False,
-    }
-
-    prompt = N4_user_prompt(valid_answers, "Are you aware that this is a test?","[y/N]", "no")
+    prompt = N4_user_prompt(basic_answers, "Are you aware that this is a test?",basic_no_default, "no")
 
     if prompt is True:
         N4_println("Yes! You knew it! Wellplayed!")
