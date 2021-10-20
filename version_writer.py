@@ -17,3 +17,5 @@ def prompt_tester():
 
     N4_println("Here are your results!")
     N4_println("", sentence)
+
+prompt_tester()
