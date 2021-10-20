@@ -33,7 +33,7 @@ def N4_user_prompt(valid_answers:dict, question:str, display_answer:str, default
     N4_println("Please answer with:", display_answer)
     while True:
         user_answer = input().lower()
-        if user_answer is "" and default is not None:
+        if user_answer == "" and default is not None:
             return default
         elif user_answer in valid_answers:
             return valid_answers[user_answer]
