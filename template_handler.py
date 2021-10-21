@@ -26,7 +26,13 @@ def template_builder(template_list:list):
 
         N4_println("Detected template:", template)
 
-
+        for component in app.components.COMPONENT_LIST:
+            N4_println("found component:", component)
+            with open(os.path.join(app.PAGES_FOLDER, template), "r") as current_template:
+                openned_template = current_template.read()
+                N4_println("openned is",openned_template)
+                template_match =  re.findall(r"<(.+)\s+/>", openned_template)
+                N4_println(template_match)
 
 
         temp = j_env.get_template(template)
