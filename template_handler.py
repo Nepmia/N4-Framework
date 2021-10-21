@@ -32,7 +32,16 @@ def template_builder(template_list:list):
                 openned_template = current_template.read()
                 N4_println("openned is",openned_template)
                 template_match =  re.findall(r"<(.+)\s+/>", openned_template)
-                N4_println(template_match)
+
+                for item in template_match:
+                    N4_println(item)
+
+                    component_name = re.findall(r"^(.*?) ", item)[0]
+
+                    if component_name in app.components.COMPONENT_LIST:
+                        N4_println("Yes!")
+                    else:
+                        N4_println("No!")
 
 
         temp = j_env.get_template(template)
