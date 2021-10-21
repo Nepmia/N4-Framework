@@ -3,10 +3,11 @@ import app
 import os
 import app.components 
 import re
-from termcolor import colored
+
+from helpers import N4_println
 
 j_env = Environment(
-    loader=FileSystemLoader(app.TEMPLATE_FOLDER),
+    loader=FileSystemLoader(app.PAGES_FOLDER),
     autoescape=select_autoescape()
 )
 
@@ -16,28 +17,21 @@ def templates_lister():
     Returns:
         [list]: List containing templates file names 
     """
-    print(
-    colored("[N4] ", "blue"),
-    colored("template list rendered. ", "cyan")
-    )
-    return os.listdir(app.TEMPLATE_FOLDER)
+    N4_println("Template list rendered.")
+    return os.listdir(app.PAGES_FOLDER)
 
-def template_builder():
-    tlist = templates_lister()
-    for template in tlist:
-        print(
-        colored("[N4] ", "blue"),
-        colored("Detected template:", "cyan"),
-        colored(template, "red"),
-        colored("buidling in progress...", "cyan")
-        )
-        component_list = re.findall()
+def template_builder(template_list:list):
+
+    for template in template_list:
+
+        N4_println("Detected template:", template)
 
 
 
 
-        # temp = j_env.get_template(template)
-        # rendered_template = temp.render(kek="LOL")
+        temp = j_env.get_template(template)
+        rendered_template = temp.render(kek="LOL")
+        N4_println(rendered_template)
 
 def component_builder():
     for component in app.COMPONENT_FOLDER:

@@ -3,7 +3,7 @@
 VERSION=0 #Default version, it will be managed by your builder even if you can do it manually which I don't recommend.
 
 NAME="app"
-TEMPLATE_FOLDER=f"{NAME}/templates"
+PAGES_FOLDER=f"{NAME}/pages"
 STATIC_FOLDER=f"{NAME}/static"
 MODULE_FOLDER=f"{NAME}/modules"
 ROOT=f"{NAME}/"

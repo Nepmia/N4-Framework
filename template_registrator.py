@@ -60,7 +60,7 @@ def templates_exporter(templates_list, module_path):
         module_path (string): path to templateRegistrator module
     """
     for item in templates_list:
-        title = title_extractor(f"{app.TEMPLATE_FOLDER}/{item}") # Get template title using title_extractor()
+        title = title_extractor(f"{app.PAGES_FOLDER}/{item}") # Get template title using title_extractor()
         parsed_item = item.replace(".html", "") 
         if title == None:
             print(

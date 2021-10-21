@@ -1,4 +1,4 @@
-from template_handler import template_builder
+from template_handler import template_builder, templates_lister
 import app
 from template_registrator import templates_module, templates_exporter, template_registrator
 import os
@@ -7,4 +7,5 @@ import os
 
 
 template_registrator()
-# template_builder()
+
+template_builder(templates_lister())
