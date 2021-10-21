@@ -1,12 +1,9 @@
 from termcolor import colored
 
-def write(path, content, method):
-    print(
-        colored("[N4] ", "blue"),
-        colored("Recorded a writing request with content:", "cyan"),
-        colored(content, "red"), colored("with method", "cyan"),colored(method, "red"),
-        colored("on this file","cyan"),
-        colored(path,"red")
-        )
+from helpers import N4_println
+
+def write(path:str, content:str, method:str):
+    N4_println("Recorded a writing request with content:", content, f"on file {path}")
+
     with open(path, method) as module:
         module.write(content)
