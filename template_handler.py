@@ -1,10 +1,11 @@
+from ast import Index
 from jinja2 import Environment, select_autoescape, FileSystemLoader
 import app
 import os
 import app.components 
 import re
 
-from helpers import N4_println
+from helpers import N4_println, working_dir
 
 j_env = Environment(
     loader=FileSystemLoader(app.PAGES_FOLDER),
@@ -34,18 +35,26 @@ def template_builder(template_list:list):
                 template_match =  re.findall(r"<(.+)\s+/>", openned_template)
 
                 for item in template_match:
-                    N4_println(item)
-
                     component_name = re.findall(r"^(.*?) ", item)[0]
+                    component_arg = re.findall(r" (\w+=\".+?\")", item)
 
                     if component_name in app.components.COMPONENT_LIST:
                         N4_println("Yes!")
+
+                        parsed_arg_list = str(component_arg).replace("[","").replace("]","").replace("'","")
+                        component_path = f"{app.COMPONENT_FOLDER}/{component_name}/{component_name}/{component_name}.html"
+                        parsed_component = f"{{% with {parsed_arg_list} %}}{{% include \"{component_path}\" %}}{{% endwith %}}"
+                        test = re.sub(fr"<(({component_name}).+)\s+/>", parsed_component, openned_template)
+
+                        N4_println(test)
+
+
                     else:
                         N4_println("No!")
 
 
-        temp = j_env.get_template(template)
-        rendered_template = temp.render(kek="LOL")
+        temp = j_env.get_template(test)
+        rendered_template = temp.render()
         N4_println(rendered_template)
 
 def component_builder():

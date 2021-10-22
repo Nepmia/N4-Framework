@@ -1,5 +1,8 @@
+from jinja2.utils import import_string
 from termcolor import colored
-import sys
+from pathlib import Path
+
+working_dir = Path.cwd()
 
 basic_answers =  {
         "yes" : True,
