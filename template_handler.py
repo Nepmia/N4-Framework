@@ -8,7 +8,7 @@ import re
 from helpers import N4_println, working_dir
 
 j_env = Environment(
-    loader=FileSystemLoader(app.PAGES_FOLDER),
+    loader=FileSystemLoader(app.COMPONENT_FOLDER),
     autoescape=select_autoescape()
 )
 
@@ -42,7 +42,7 @@ def template_builder(template_list:list):
                         N4_println("Yes!")
 
                         parsed_arg_list = str(component_arg).replace("[","").replace("]","").replace("'","")
-                        component_path = os.path.join(working_dir, f"{app.COMPONENT_FOLDER}/{component_name}/{component_name}.html")
+                        component_path =  f"{component_name}.html"
                         parsed_component = f"{{% with {parsed_arg_list} %}}{{% include \"{component_path}\" %}}{{% endwith %}}"
                         test = re.sub(fr"<(({component_name}).+)\s+/>", parsed_component, openned_template)
 
