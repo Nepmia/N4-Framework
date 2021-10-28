@@ -3,4 +3,4 @@
 
 <img src="stuff" alt="stuff" />
 
-<testComponent name="jean" second="jean" trois="damien" />
+{% with name="jean", second="jean", trois="damien" %}{% include "testComponent.html" %}{% endwith %}
