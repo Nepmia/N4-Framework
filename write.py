@@ -7,7 +7,3 @@ def write(path:str, content:str, method:str):
 
     with open(path, method) as module:
         module.write(content)
-
-
-def jeandamien(damien):
-    pass
