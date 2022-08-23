@@ -1,3 +1,6 @@
+# I will never finish this thing, i discovered Vue in the meantime
+
+
 # N4-Framework
  
  N4 Front-End Developpement Framework is a personnal developpement tool made to build simple websites. It uses a dynamic template + component system using Jinja. It is similar to Flask but in a static version.  
